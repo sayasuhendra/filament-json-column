@@ -29,7 +29,7 @@ class JsonColumn extends Field
 
         $this->rules([
             fn (): Closure => function (string $attribute, $value, Closure $fail) {
-                $rule = is_array($value) || (is_string($value) && json_validate($value));
+                $rule = is_array($value) || is_string($value) || json_validate($value);
 
                 if (! $rule) {
                     $fail(__('validation.json'));
